@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vibgyorpack-x446z8nv.manus.space/sitemap.xml
