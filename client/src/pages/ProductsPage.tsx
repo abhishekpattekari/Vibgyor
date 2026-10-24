@@ -3,20 +3,21 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
 import { Link } from "wouter";
-import { ArrowUpRight, Check, Sparkles, Layers, Box, FileText } from "lucide-react";
+import { ArrowUpRight, Check, Download, Layers, ShieldCheck, Sparkles } from "lucide-react";
+import { downloadBrochure } from "@/lib/downloadBrochure";
 
 const PRODUCTS = [
   {
     id: "printed",
     index: "01",
     title: "Printed Laminated Rolls",
-    badge: "Rotogravure up to 9 Colours",
+    badge: "Rotogravure up to 8 Colours",
     subtitle: "High-speed rotogravure printed rolls for continuous FFS packaging lines",
     image: "/images/printed-rolls.jpg",
     description:
       "Engineered for high-volume automated form-fill-seal (FFS) lines. We print on flexible web substrates with electronic register control, razor-sharp micro-dot fidelity, and specialized heat-resistant lacquers.",
     features: [
-      "Up to 9-colour rotogravure printing capability",
+      "Up to 8-colour rotogravure printing capability",
       "Reverse and surface printing options",
       "Uniform web tension and precision slit roll edges",
       "Tuned COF (Coefficient of Friction) for smooth filling speed",
@@ -65,6 +66,63 @@ const PRODUCTS = [
   },
 ];
 
+const PACKET_GALLERY = [
+  {
+    title: "Biscuits & Cookies Packets",
+    category: "Confectionery",
+    image: "/images/biscuits-packaging.jpg",
+    desc: "Crisp-lock moisture barrier flow-wraps and stand-up pouches with transparent preview windows.",
+  },
+  {
+    title: "Frozen Sweet Corn Pouches",
+    category: "Frozen Foods",
+    image: "/images/frozen-sweetcorn.jpg",
+    desc: "Sub-zero cold resistance down to -40°C with frost proofing and high puncture resistance.",
+  },
+  {
+    title: "Frozen Green Peas Pouches",
+    category: "Frozen Foods",
+    image: "/images/frozen-greenpeas.jpg",
+    desc: "Drop-tested freezer grade co-extruded barrier locking in natural pea freshness.",
+  },
+  {
+    title: "Potato Chips & Snack Packs",
+    category: "Snack Foods",
+    image: "/images/potato-chips.jpg",
+    desc: "High-barrier metallic foil with nitrogen flushing integrity for maximum crunch.",
+  },
+  {
+    title: "Chocolates & Premium Confectionery",
+    category: "Confectionery",
+    image: "/images/chocolates-packaging.jpg",
+    desc: "Cocoa fat and aroma protection barrier with metallic and matte foil finish.",
+  },
+  {
+    title: "Chakki Fresh Atta 5kg Pouches",
+    category: "Flour & Staples",
+    image: "/images/atta-packaging.jpg",
+    desc: "Heavy-gauge load-bearing multi-layer laminates with ergonomic D-punch handle.",
+  },
+  {
+    title: "Indian Dals & Pulses Pouches",
+    category: "Pulses & Grains",
+    image: "/images/dal-pulses-packaging.jpg",
+    desc: "Resealable zipper stand-up pouches with clear transparent viewing window.",
+  },
+  {
+    title: "Artisan Tea & Coffee Aroma Pouches",
+    category: "Beverages",
+    image: "/images/tea-coffee-packaging.jpg",
+    desc: "Oxygen-barrier laminates equipped with one-way aroma degassing valve.",
+  },
+  {
+    title: "Personal Care & Medical Barrier Packs",
+    category: "Hygienic & Medical",
+    image: "/images/medical-personal-care.jpg",
+    desc: "Liquid-tight spouted refill pouches and sterile medical barrier packaging.",
+  },
+];
+
 const SUBSTRATES = [
   { name: "BOPP", type: "Biaxially Oriented Polypropylene", barrier: "Moisture & Clarity", role: "Excellent clarity, stiffness, and print surface for snack packaging." },
   { name: "PET", type: "Polyethylene Terephthalate", barrier: "Tension & Thermal Stability", role: "High mechanical strength, thermal resistance for hot seal processes." },
@@ -92,14 +150,22 @@ export default function ProductsPage() {
           <div className="page-width page-hero-content">
             <div className="eyebrow light">
               <span className="eyebrow-rule" />
-              <span>Product Catalogue</span>
+              <span>Product Catalogue & Range</span>
             </div>
             <h1>
               One Material Language. <em>Many Pack Formats.</em>
             </h1>
             <p className="page-hero-sub">
-              Explore our full spectrum of rotogravure printed rolls, plain barrier webs, and pre-formed flexible pouches custom-engineered for your product line.
+              Explore our full spectrum of rotogravure printed rolls up to 8 colours, plain barrier webs, and customized flexible pouches engineered for your filling line.
             </p>
+            <div style={{ marginTop: "24px", display: "flex", gap: "12px", flexWrap: "wrap" }}>
+              <button onClick={downloadBrochure} className="button button-primary">
+                <Download size={16} /> Download Brochure PDF
+              </button>
+              <Link href="/contact" className="button button-secondary">
+                Request Specifications <ArrowUpRight size={16} />
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -169,6 +235,9 @@ export default function ProductsPage() {
                 <Link href="/contact" className="button button-primary">
                   Request Specifications & Quote <ArrowUpRight size={16} />
                 </Link>
+                <button onClick={downloadBrochure} className="button button-secondary">
+                  <Download size={16} /> Download Brochure PDF
+                </button>
                 <a href="https://wa.me/917558381231" target="_blank" rel="noreferrer" className="button button-whatsapp">
                   Enquire on WhatsApp
                 </a>
@@ -177,11 +246,53 @@ export default function ProductsPage() {
           </div>
         </section>
 
+        {/* Real Packets & Pouches Showcase Gallery */}
+        <section className="section-pad dark-surface" id="packets-showcase">
+          <div className="page-width">
+            <div className="section-kicker light">
+              <span>02</span>
+              <div />
+              <span>Packets & Pouches In Practice</span>
+            </div>
+            <div className="markets-title-row">
+              <div>
+                <h2 className="section-title light">
+                  Packaging Categories: <em>Real-World Applications</em>
+                </h2>
+                <p className="section-sub light" style={{ color: "rgba(255,255,255,0.75)" }}>
+                  From nitrogen-flushed chips and frozen foods to atta, pulses, confectionery, and medical pouches.
+                </p>
+              </div>
+              <button onClick={downloadBrochure} className="button button-outline" style={{ color: "#fff", borderColor: "rgba(255,255,255,0.3)" }}>
+                <Download size={16} /> Download Complete Catalog PDF
+              </button>
+            </div>
+
+            <div className="packet-cards-grid">
+              {PACKET_GALLERY.map((pkt, idx) => (
+                <div key={idx} className="packet-item-card">
+                  <div className="packet-img-box">
+                    <img src={pkt.image} alt={pkt.title} loading="lazy" />
+                    <span className="packet-cat-tag">{pkt.category}</span>
+                  </div>
+                  <div className="packet-body">
+                    <h4>{pkt.title}</h4>
+                    <p>{pkt.desc}</p>
+                    <Link href="/contact" className="packet-action-link">
+                      Order / Sample Enquire <ArrowUpRight size={14} />
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Substrate Library */}
         <section className="section-pad surface-tinted" id="substrates">
           <div className="page-width">
             <div className="section-kicker">
-              <span>02</span>
+              <span>03</span>
               <div />
               <span>Material Science</span>
             </div>

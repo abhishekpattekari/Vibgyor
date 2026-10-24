@@ -3,12 +3,15 @@ import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
+import GoogleMapEmbed from "@/components/GoogleMapEmbed";
+import { downloadBrochure } from "@/lib/downloadBrochure";
 import {
   ArrowUpRight,
   Check,
   CircleDot,
   ChevronDown,
   ChevronRight,
+  Download,
   FileText,
   Factory,
   Gauge,
@@ -49,9 +52,9 @@ const ASSETS = {
 const companySnapshot = [
   ["Industry", "Flexible Laminated Packaging"],
   ["Printing", "Rotogravure"],
-  ["Printing capability", "Up to 9 Colours"],
+  ["Printing capability", "Up to 8 Colours"],
   ["Manufacturing", "Printing • Lamination • Slitting • Pouch Making"],
-  ["Markets", "Food • Agriculture • Frozen Food • Personal Care • Wellness"],
+  ["Markets", "Food • Agriculture • Frozen Food • Personal Care • Wellness • etc"],
 ];
 
 const products = [
@@ -129,23 +132,27 @@ const industries = [
 const processSteps = [
   {
     number: "01",
-    title: "Gravure printing",
-    text: "Engraved-cylinder print capability for controlled detail, colour, and repeatability.",
+    title: "1. Printing Machine (Rotogravure)",
+    text: "High-speed 8-station gravure press running up to 8 colours with automatic register control and inline drying.",
+    image: "/images/machine-printing-rotogravure.jpg",
   },
   {
     number: "02",
-    title: "Lamination",
-    text: "Flexible structures brought together around the product and packaging application.",
+    title: "2. Lamination Machine (Solventless)",
+    text: "Precision solventless multi-layer lamination combining barrier films, aluminum foils, and polymer sealant webs.",
+    image: "/images/machine-lamination-solventless.jpg",
   },
   {
     number: "03",
-    title: "Slitting",
-    text: "Rolls prepared to customer-specific width and conversion requirements.",
+    title: "3. Slitting Machine (Rewinder)",
+    text: "Rotary shear slitter with dynamic tension control, slicing master rolls into finished narrow reels within ±0.5 mm.",
+    image: "/images/machine-slitting-rewinding.jpg",
   },
   {
     number: "04",
-    title: "Pouch making",
-    text: "Finished pouch formats produced where the final pack format calls for them.",
+    title: "4. Pouching Machine (Automated)",
+    text: "Automated pouch converting machinery forming stand-up zipper pouches, three-side seal packs, and custom bags.",
+    image: "/images/machine-pouch-making.jpg",
   },
 ];
 
@@ -230,12 +237,62 @@ const lightboxImages = [
 ];
 
 const galleryItems = [
-  { number: "01", category: "Factory", title: "The production floor", src: ASSETS.factory, alt: "Flexible packaging manufacturing factory floor" },
-  { number: "02", category: "Machinery", title: "Built for repeatability", src: ASSETS.hero, alt: "Flexible packaging printing and converting machinery" },
-  { number: "03", category: "Production", title: "Print. Laminate. Convert.", src: ASSETS.rolls, alt: "Printed laminated film rolls in production" },
-  { number: "04", category: "Products", title: "Finished pack formats", src: ASSETS.pouchFormats, alt: "Finished flexible packaging pouches" },
-  { number: "05", category: "Quality", title: "Every detail checked", src: ASSETS.quality, alt: "Quality inspection of laminated packaging film" },
-  { number: "06", category: "Dispatch", title: "Ready for the next process", src: ASSETS.gallery, alt: "Packed finished flexible packaging goods" },
+  {
+    number: "01",
+    category: "Plant Floor",
+    title: "Small production floor (5-6 machines lineup)",
+    src: "/images/production-floor-shop.jpg",
+    alt: "Flexible packaging factory shop floor with 5-6 machines in line",
+  },
+  {
+    number: "02",
+    category: "Machinery",
+    title: "1. Printing machine (Rotogravure up to 8 colours)",
+    src: "/images/machine-printing-rotogravure.jpg",
+    alt: "8-colour rotogravure printing machine",
+  },
+  {
+    number: "03",
+    category: "Machinery",
+    title: "2. Lamination machine (Solventless barrier bonding)",
+    src: "/images/machine-lamination-solventless.jpg",
+    alt: "Multi-ply solventless lamination machine",
+  },
+  {
+    number: "04",
+    category: "Machinery",
+    title: "3. Slitting machine (Precision rewinder)",
+    src: "/images/machine-slitting-rewinding.jpg",
+    alt: "High-precision film slitting and rewinding machine",
+  },
+  {
+    number: "05",
+    category: "Machinery",
+    title: "4. Pouching machine (Automated zipper pouch line)",
+    src: "/images/machine-pouch-making.jpg",
+    alt: "Automated stand-up zipper pouch making machine",
+  },
+  {
+    number: "06",
+    category: "Products",
+    title: "Golden crisp potato chips snack packets",
+    src: "/images/potato-chips.jpg",
+    alt: "Glossy foil potato chips snack packaging",
+  },
+  {
+    number: "07",
+    category: "Products",
+    title: "Frozen sweet corn & green peas barrier pouches",
+    src: "/images/frozen-sweetcorn.jpg",
+    alt: "Cold-resistant frozen food flexible pouches",
+  },
+  {
+    number: "08",
+    category: "Products",
+    title: "Chakki fresh atta & Indian dal window pouches",
+    src: "/images/atta-packaging.jpg",
+    alt: "Heavy-duty atta and pulses flexible packaging pouches",
+  },
 ];
 
 function WhatsAppIcon({ size = 18 }: { size?: number }) {
@@ -336,9 +393,7 @@ export default function Home() {
                 High-quality printed and laminated flexible packaging solutions for food, agriculture, frozen food, personal care and other growing industries.
               </p>
               <div className="hero-actions">
-                <Link href="/contact" className="button button-primary">
-                  Request a quote <MoveRight size={17} />
-                </Link>
+
                 <Link href="/products" className="text-link light">
                   <PlayCircle size={18} /> Explore products
                 </Link>
@@ -348,9 +403,9 @@ export default function Home() {
 
           <div className="hero-bottom page-width">
             <div className="hero-note">
-              <span className="status-dot" /> Shingve Tukai Industrial Area · MIDC
+              <span className="status-dot" /> Manufacturing Facility · MIDC Shingave Tukai
             </div>
-            <p>Plot No. B-26/1 · Ahmednagar · Maharashtra · India</p>
+            <p>Plot No. B-26/1, MIDC, Shingave Tukai, Tal. Newasa, Dist. Ahmednagar – 414607, Maharashtra, India</p>
           </div>
         </section>
 
@@ -362,7 +417,7 @@ export default function Home() {
           <div className="intro-layout">
             <h2>
               A manufacturing partner built for the{" "}
-                <em>Driven by Quality.</em>
+              <em>Driven by Quality.</em>
             </h2>
             <div className="intro-copy">
               <p className="lead">
@@ -566,6 +621,16 @@ export default function Home() {
             <div className="process-grid">
               {processSteps.map(step => (
                 <article className="process-card" key={step.number}>
+                  {step.image && (
+                    <div style={{ width: "100%", height: "160px", overflow: "hidden", borderRadius: "4px", marginBottom: "14px", background: "#000" }}>
+                      <img
+                        src={step.image}
+                        alt={step.title}
+                        loading="lazy"
+                        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                      />
+                    </div>
+                  )}
                   <span className="process-number">{step.number}</span>
                   <div className="process-icon">
                     <CircleDot size={20} />
@@ -620,49 +685,6 @@ export default function Home() {
                 </li>
               ))}
             </ol>
-          </div>
-        </section>
-
-        <section className="industries-section section-pad" id="industries">
-          <div className="page-width industries-layout">
-            <div className="industries-intro">
-              <div className="section-kicker">
-                <span>06</span>
-                <div /> Industries we serve
-              </div>
-              <h2>
-                Packaging that knows its <em>job.</em>
-              </h2>
-              <p>
-                We work with businesses across a range of product categories
-                where flexible laminated packaging can support product
-                protection, presentation, and brand communication.
-              </p>
-              <button
-                className="button button-outline"
-                onClick={() => go("contact")}
-              >
-                Talk to a packaging specialist <ArrowUpRight size={16} />
-              </button>
-            </div>
-            <div className="industry-list">
-              {industries.map((industry, index) => (
-                <button
-                  className="industry-item"
-                  key={industry.name}
-                  onClick={() => go("contact")}
-                >
-                  <span className="industry-index">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span>
-                    <strong>{industry.name}</strong>
-                    <small>{industry.note}</small>
-                  </span>
-                  <ArrowUpRight size={18} />
-                </button>
-              ))}
-            </div>
           </div>
         </section>
 
@@ -834,6 +856,11 @@ export default function Home() {
                 </button>
               ))}
             </div>
+            <div style={{ marginTop: "32px", textAlign: "center" }}>
+              <Link href="/gallery" className="button button-outline" style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+                View complete plant & machinery gallery <ArrowUpRight size={16} />
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -908,19 +935,14 @@ export default function Home() {
                 <span>
                   <Mail size={17} /> vibgyorprintnpack@gmail.com
                 </span>
-              </div>
-              <div className="contact-map-wrap">
-                <div className="contact-map-heading">
-                  <span>Factory location</span>
-                  <small>Ahmednagar · Maharashtra · India</small>
-                </div>
-                <iframe
-                  className="contact-map"
-                  title="Vibgyor Print N Pack factory location map"
-                  src="https://www.google.com/maps?q=Plot+No.+B-26%2F1%2C+MIDC%2C+Shingave+Tukai%2C+Tal.+Newasa%2C+Dist.+Ahmednagar%2C+Maharashtra+414607%2C+India&output=embed"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
+                <button
+                  type="button"
+                  className="contact-channel"
+                  onClick={downloadBrochure}
+                  style={{ background: "rgba(228, 147, 45, 0.15)", borderColor: "rgba(228, 147, 45, 0.4)", color: "#e4932d" }}
+                >
+                  <Download size={17} /> Download Official Brochure PDF
+                </button>
               </div>
             </div>
             <form className="quote-form" onSubmit={handleSubmit}>
@@ -1025,6 +1047,14 @@ export default function Home() {
               </p>
             </form>
           </div>
+        </section>
+
+        {/* Complete Plant Location & Professional Google Map Display */}
+        <section className="section-pad page-width" id="plant-location" style={{ paddingTop: "20px" }}>
+          <GoogleMapEmbed
+            title="Manufacturing Plant Location & Coordinates"
+            subtitle="Plot No. B-26/1, MIDC, Shingave Tukai, Tal. Newasa, Dist. Ahmednagar – 414607, Maharashtra, India. Direct road and freight connectivity across Maharashtra, Gujarat, and pan-India."
+          />
         </section>
       </main>
 

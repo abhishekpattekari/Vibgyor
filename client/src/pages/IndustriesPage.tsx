@@ -3,53 +3,54 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
 import { Link } from "wouter";
-import { ArrowUpRight, Apple, Sprout, Snowflake, Sparkles, HeartPulse, Check } from "lucide-react";
+import { ArrowUpRight, Apple, Sprout, Snowflake, Sparkles, HeartPulse, Check, Download, Layers } from "lucide-react";
+import { downloadBrochure } from "@/lib/downloadBrochure";
 
 const SECTORS = [
   {
     icon: Apple,
-    title: "Food & Beverages",
-    subtitle: "Aroma retention, moisture barrier, crisp shelf appeal",
-    desc: "Food packaging requires uncompromising barrier protection against humidity, oxygen, and UV light to preserve crunch, flavor, and freshness.",
-    products: ["Namkeen & Potato Chips", "Dry Fruits & Nuts", "Spices, Masalas & Seasonings", "Biscuits & Confectionery", "Tea, Coffee & Beverage Powders"],
-    structure: "BOPP / Met-BOPP, PET / Met-PET / Poly, Matte BOPP / Foil / Poly",
-    image: "/images/printed-rolls.jpg",
-  },
-  {
-    icon: Sprout,
-    title: "Agriculture & Agro-Chemicals",
-    subtitle: "Durable barrier plies for aggressive active ingredients",
-    desc: "Agricultural products require heavy-duty laminate structures with superior dart-impact resistance and chemical-inert sealant films.",
-    products: ["Hybrid Crop & Vegetable Seeds", "Agrochemicals & Pesticides", "Bio-fertilizers & Micro-nutrients", "Animal Feeds & Supplements"],
-    structure: "PET / Foil / Special Heavy Gauge Poly, PET / Poly / Met-PET",
-    image: "/images/plain-metallic-rolls.jpg",
-  },
-  {
-    icon: Snowflake,
-    title: "Frozen Foods & Ready-to-Eat",
-    subtitle: "Sub-zero durability, leakproof hermetic seal integrity",
-    desc: "Cold chain handling subjects pouches to extreme thermal shock and handling drops. Our low-temperature sealant layers prevent brittleness.",
-    products: ["Frozen Peas, Corn & Vegetables", "Ready-to-Cook Curries & Parathas", "Ice Creams & Frozen Desserts", "Meat & Seafood Products"],
-    structure: "Co-ex Nylon / Poly, PET / Poly, High-Impact EVOH Barrier Laminates",
-    image: "/images/pouch-formats.jpg",
+    title: "1. Snack Food Packaging",
+    subtitle: "High-performance solutions tailored for the snack food industry",
+    desc: "Vibgyor provides high-performance solutions tailored for the snack food industry. High-barrier metalized films preserve crispness, prevent oil oxidation, and retain nitrogen flush integrity with vibrant rotogravure print brilliance.",
+    products: ["Potato Chips & Crisps", "Extruded Snacks & Namkeen", "Roasted Nuts & Dry Fruits", "Popcorn & Fryums"],
+    structure: "BOPP / Met-BOPP, PET / Met-PET / Poly, Gloss & Matte Foil Laminates",
+    image: "/images/potato-chips.jpg",
   },
   {
     icon: Sparkles,
-    title: "Personal Care & Home Care",
-    subtitle: "Chemical resistance, attractive gloss, easy dispensing",
-    desc: "Household liquids and personal care powders require laminate barriers resistant to surfactants, essential oils, and fragrances.",
-    products: ["Detergent Powders & Liquid Refills", "Shampoo & Conditioner Sachets", "Face Creams, Body Lotions & Powders", "Wet Wipes & Cleaning Cloths"],
-    structure: "PET / Met-PET / Special Sealant Poly, BOPP / Foil / PE",
-    image: "/images/product-detail.jpg",
+    title: "2. Confectionery & Biscuits Packaging",
+    subtitle: "Protective barriers maintaining moisture resistance and crunch",
+    desc: "Our packaging for confectioneries and biscuits integrates protective barriers that maintain moisture resistance, crisp texture, aroma preservation, and long shelf life against humidity and thermal variation.",
+    products: ["Artisan Biscuits & Cookies", "Chocolates & Truffles", "Hard Candies & Gums", "Wafers & Bakery Products"],
+    structure: "BOPP / Met-BOPP / Cast Polypropylene (CPP), Printed PET / Foil / Cold-Seal",
+    image: "/images/biscuits-packaging.jpg",
+  },
+  {
+    icon: Snowflake,
+    title: "3. Frozen Food Packaging",
+    subtitle: "Designed to withstand extreme temperatures down to -40°C",
+    desc: "Designed to withstand extreme temperatures, our frozen food packaging solutions offer high puncture resistance, drop durability, and hermetic seals from -18°C down to -40°C for green peas, sweet corn, and frozen snacks.",
+    products: ["Frozen Sweet Corn & Green Peas", "Ready-to-Cook Snacks & Parathas", "Frozen Seafood & Poultry", "Ice Creams & Frozen Desserts"],
+    structure: "Co-ex Polyamide (Nylon) / Low-Temperature Linear Polyethylene (PE)",
+    image: "/images/frozen-sweetcorn.jpg",
+  },
+  {
+    icon: Sprout,
+    title: "4. Tea, Coffee, Flour, Pulses & Spices Packaging",
+    subtitle: "Aroma-shield & heavy-gauge durability for staples and beverages",
+    desc: "For tea and coffee, preserving aroma and freshness is paramount. Our high-barrier laminates with degassing valve compatibility protect against oxidation, while our heavy-duty pouches for atta, pulses, and ground spices ensure transit endurance.",
+    products: ["Roasted Coffee Beans & Instant Coffee", "Specialty Green & Assam Teas", "Chakki Fresh Atta (5kg & 10kg)", "Indian Dals & Pulses (Window Pouches)", "Ground Spices & Masalas"],
+    structure: "Matte PET / Foil / PE, High-Tensile Heavy Gauge PE Gussets with D-Punch Handle",
+    image: "/images/tea-coffee-packaging.jpg",
   },
   {
     icon: HeartPulse,
-    title: "Wellness & Nutraceuticals",
-    subtitle: "Ultra-pure pharmaceutical-grade moisture protection",
-    desc: "Nutritional supplements and health formulations demand high-barrier protection to prevent oxidation and active ingredient degradation.",
-    products: ["Whey Protein & Gym Supplements", "Ayurvedic & Herbal Extracts", "Vitamin Powders & Effervescent Tablets", "Dietary Fiber & Health Mixes"],
-    structure: "PET / Pure Aluminium Foil / Poly, Stand-Up Zipper Pouches",
-    image: "/images/quality-detail.jpg",
+    title: "5. Home & Personal Care, Medical Devices Packaging",
+    subtitle: "Hygienic barrier solutions for liquids, wipes & healthcare",
+    desc: "From personal care products to sensitive medical devices, our packaging meets stringent hygiene, hermetic sealing, and chemical resistance requirements for spouted refill pouches, cosmetic sachets, and sterile medical items.",
+    products: ["Liquid Soap & Lotion Refill Pouches (with Spout)", "Disinfectant & Wet Wipes Sachets", "Sterile Medical Gauze & Device Pouches", "Shampoo & Cosmetic Barrier Sachets"],
+    structure: "Multi-barrier PET / Nylon / Chemical-Resistant PE, Clean-room Compatible",
+    image: "/images/medical-personal-care.jpg",
   },
 ];
 
@@ -64,19 +65,27 @@ export default function IndustriesPage() {
 
       <main className="page-main">
         {/* Hero */}
-        <section className="page-hero-banner" style={{ backgroundImage: `url('/images/pouch-formats.jpg')` }}>
+        <section className="page-hero-banner" style={{ backgroundImage: `url('/images/potato-chips.jpg')` }}>
           <div className="page-hero-overlay" />
           <div className="page-width page-hero-content">
             <div className="eyebrow light">
               <span className="eyebrow-rule" />
-              <span>Markets We Serve</span>
+              <span>Target Industry Sectors</span>
             </div>
             <h1>
               Packaging that Knows <em>Its Job.</em>
             </h1>
             <p className="page-hero-sub">
-              Different products ask different things of a laminate. We start with the chemical and physical demands of your product, then engineer the exact barrier structure.
+              Different products ask different things of a laminate. From snacks and confectionery to frozen foods, beverages, staples, and medical devices, we engineer the exact barrier structure for your market.
             </p>
+            <div style={{ marginTop: "20px", display: "flex", gap: "12px", flexWrap: "wrap" }}>
+              <button onClick={downloadBrochure} className="button button-primary">
+                <Download size={16} /> Download Market Brochure PDF
+              </button>
+              <Link href="/contact" className="button button-secondary">
+                Request a Custom Quote <ArrowUpRight size={16} />
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -85,69 +94,62 @@ export default function IndustriesPage() {
           <div className="section-kicker">
             <span>01</span>
             <div />
-            <span>Target Industries</span>
+            <span>Our Market Categories</span>
           </div>
-          <h2 className="section-title">Specialized Packaging Solutions by Category</h2>
+          <h2 className="section-title">Specialized Packaging Solutions by Sector</h2>
 
           <div className="sectors-stack">
             {SECTORS.map((sec, i) => {
               const IconComp = sec.icon;
               return (
                 <div key={i} className="sector-card">
-                  <div className="sector-top">
-                    <div className="sector-icon-wrap">
-                      <IconComp size={24} />
+                  <div className="sector-grid-layout">
+                    <div className="sector-info-side">
+                      <div className="sector-top">
+                        <div className="sector-icon-wrap">
+                          <IconComp size={24} />
+                        </div>
+                        <div>
+                          <h3>{sec.title}</h3>
+                          <p className="sector-sub">{sec.subtitle}</p>
+                        </div>
+                      </div>
+                      <p className="sector-desc">{sec.desc}</p>
+
+                      <div className="sector-products-box">
+                        <strong>Typical Applications:</strong>
+                        <ul>
+                          {sec.products.map((p, idx) => (
+                            <li key={idx}>
+                              <Check size={14} className="check-icon" />
+                              <span>{p}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="sector-structure-box">
+                        <Layers size={15} />
+                        <div>
+                          <small>RECOMMENDED SUBSTRATE STRUCTURE</small>
+                          <p>{sec.structure}</p>
+                        </div>
+                      </div>
+
+                      <div className="sector-action-row">
+                        <Link href="/contact" className="sector-quote-link">
+                          Enquire for this Market <ArrowUpRight size={15} />
+                        </Link>
+                      </div>
                     </div>
-                    <div>
-                      <h3>{sec.title}</h3>
-                      <p className="sector-sub">{sec.subtitle}</p>
+
+                    <div className="sector-image-side">
+                      <img src={sec.image} alt={sec.title} loading="lazy" />
                     </div>
-                  </div>
-                  <p className="sector-desc">{sec.desc}</p>
-
-                  <div className="sector-products-box">
-                    <strong>Typical Applications:</strong>
-                    <ul>
-                      {sec.products.map((p, idx) => (
-                        <li key={idx}>
-                          <Check size={14} className="check-icon" />
-                          <span>{p}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="sector-structure-box">
-                    <strong>Recommended Laminate:</strong>
-                    <code>{sec.structure}</code>
-                  </div>
-
-                  <div className="sector-action">
-                    <Link href="/contact" className="inline-link dark">
-                      Enquire for {sec.title} →
-                    </Link>
                   </div>
                 </div>
               );
             })}
-          </div>
-        </section>
-
-        {/* Custom brief callout */}
-        <section className="section-pad dark-surface">
-          <div className="page-width text-center">
-            <h2 className="section-title light">Need a Custom Laminate Trial for Your Line?</h2>
-            <p className="section-sub light" style={{ margin: "0 auto 24px", maxWidth: "600px" }}>
-              Send us your product sample, target shelf-life, and filling machine specifications. Our packaging team will evaluate the optimum film structure and provide sample rolls or pouches.
-            </p>
-            <div className="hero-actions" style={{ justifyContent: "center" }}>
-              <Link href="/contact" className="button button-primary">
-                Discuss Your Category <ArrowUpRight size={16} />
-              </Link>
-              <a href="https://wa.me/917558381231" target="_blank" rel="noreferrer" className="button button-whatsapp">
-                Chat on WhatsApp
-              </a>
-            </div>
           </div>
         </section>
       </main>

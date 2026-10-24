@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingActions, { WhatsAppOriginalIcon } from "@/components/FloatingActions";
+import GoogleMapEmbed from "@/components/GoogleMapEmbed";
 import { toast } from "sonner";
-import { Phone, Mail, MapPin, Send, CheckCircle2, Clock, ArrowUpRight } from "lucide-react";
+import { Phone, Mail, MapPin, Send, CheckCircle2, Clock, ArrowUpRight, Download } from "lucide-react";
+import { downloadBrochure } from "@/lib/downloadBrochure";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -21,7 +23,9 @@ export default function ContactPage() {
     window.scrollTo(0, 0);
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -39,12 +43,15 @@ export default function ContactPage() {
 
       <main className="page-main">
         {/* Hero */}
-        <section className="page-hero-banner" style={{ backgroundImage: `url('/images/hero-industrial.jpg')` }}>
+        <section
+          className="page-hero-banner"
+          style={{ backgroundImage: `url('/images/machine-printing-rotogravure.jpg')` }}
+        >
           <div className="page-hero-overlay" />
           <div className="page-width page-hero-content">
             <div className="eyebrow light">
               <span className="eyebrow-rule" />
-              <span>Contact & Request a Quote</span>
+              <span>Contact & Plant Location</span>
             </div>
             <h1>
               Let's Make Your <em>Next Pack Work Harder.</em>
@@ -52,6 +59,11 @@ export default function ContactPage() {
             <p className="page-hero-sub">
               Share your product specifications, structure, or filling requirements. Our technical team is ready to discuss pilot runs, custom barriers, and volume pricing.
             </p>
+            <div style={{ marginTop: "20px", display: "flex", gap: "12px", flexWrap: "wrap" }}>
+              <button onClick={downloadBrochure} className="button button-primary">
+                <Download size={16} /> Download Official Brochure PDF
+              </button>
+            </div>
           </div>
         </section>
 
@@ -101,7 +113,10 @@ export default function ContactPage() {
                   <ArrowUpRight size={18} className="c-card-arrow" />
                 </a>
 
-                <a href="mailto:vibgyorprintnpack@gmail.com" className="contact-action-card email-card">
+                <a
+                  href="mailto:vibgyorprintnpack@gmail.com"
+                  className="contact-action-card email-card"
+                >
                   <div className="c-card-icon email-bg">
                     <Mail size={22} />
                   </div>
@@ -126,6 +141,11 @@ export default function ContactPage() {
                 <div className="p-addr-meta">
                   <span>Industrial Zone: MIDC Shingave Tukai</span>
                   <span>State: Maharashtra (Western India Hub)</span>
+                </div>
+                <div style={{ marginTop: "14px" }}>
+                  <button onClick={downloadBrochure} className="button button-secondary" style={{ width: "100%" }}>
+                    <Download size={15} /> Download Plant Brochure PDF
+                  </button>
                 </div>
               </div>
             </div>
@@ -194,12 +214,11 @@ export default function ContactPage() {
                         />
                       </div>
                       <div className="form-group">
-                        <label htmlFor="email">Work Email *</label>
+                        <label htmlFor="email">Email Address</label>
                         <input
                           id="email"
                           name="email"
                           type="email"
-                          required
                           value={formData.email}
                           onChange={handleChange}
                           placeholder="name@company.com"
@@ -209,20 +228,21 @@ export default function ContactPage() {
 
                     <div className="form-row">
                       <div className="form-group">
-                        <label htmlFor="format">Packaging Format Needed *</label>
+                        <label htmlFor="format">Required Packaging Format *</label>
                         <select
                           id="format"
                           name="format"
                           value={formData.format}
                           onChange={handleChange}
                         >
-                          <option value="Printed Laminated Rolls">Printed Laminated Rolls (Gravure)</option>
-                          <option value="Plain Laminated Rolls">Plain & Metallic Laminated Rolls</option>
+                          <option value="Printed Laminated Rolls">Printed Laminated Rolls</option>
+                          <option value="Plain & Metallic Barrier Rolls">Plain & Metallic Barrier Rolls</option>
                           <option value="Stand-Up Zipper Pouches">Stand-Up Zipper Pouches</option>
                           <option value="Three-Side Seal Pouches">Three-Side Seal Pouches</option>
-                          <option value="Centre-Seal Pillow Pouches">Centre-Seal Pillow Pouches</option>
-                          <option value="Aluminium Foil Barrier Rolls">Aluminium Foil Barrier Rolls</option>
-                          <option value="Other / Need Recommendation">Other / Need Recommendation</option>
+                          <option value="Frozen Food Packaging Pouches">Frozen Food Packaging Pouches</option>
+                          <option value="Spouted Liquid Pouches">Spouted Liquid Pouches</option>
+                          <option value="Atta / Grain Heavy Pouch">Atta / Grain Heavy Pouch</option>
+                          <option value="Custom Laminate Development">Custom Laminate Development</option>
                         </select>
                       </div>
 
@@ -266,6 +286,14 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
+        </section>
+
+        {/* Embedded Professional Google Map */}
+        <section className="section-pad page-width" style={{ paddingTop: 0 }}>
+          <GoogleMapEmbed
+            title="Locate Our Manufacturing Plant"
+            subtitle="Visit our plant or coordinate freight dispatches at MIDC Shingave Tukai, Newasa, Ahmednagar."
+          />
         </section>
       </main>
 

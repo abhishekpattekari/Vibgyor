@@ -1,5 +1,6 @@
 import { Link } from "wouter";
-import { ArrowUpRight, MapPin, Phone, Mail, MessageSquare } from "lucide-react";
+import { ArrowUpRight, MapPin, Phone, Mail, MessageSquare, Download } from "lucide-react";
+import { downloadBrochure } from "@/lib/downloadBrochure";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -19,17 +20,26 @@ export default function Footer() {
                 className="brand-mark"
               />
               <span className="brand-type">
-                <strong>Vibgyor</strong>
-                <small>PRINT N PACK</small>
+                <strong className="brand-title">Vibgyor</strong>
+                <span className="brand-subtitle">PRINT N PACK</span>
               </span>
             </Link>
             <p className="footer-tagline">
               Flexible laminated packaging solutions engineered for performance, shelf impact, and line runnability.
             </p>
             <div className="footer-meta-badge">
-              <span>Rotogravure up to 9 Colours</span>
+              <span>Rotogravure up to 8 Colours</span>
               <span>•</span>
               <span>MIDC Shingave Tukai</span>
+            </div>
+            <div style={{ marginTop: "18px" }}>
+              <button
+                onClick={downloadBrochure}
+                className="footer-brochure-download-btn"
+                title="Download Company Brochure PDF"
+              >
+                <Download size={15} /> Download Brochure PDF
+              </button>
             </div>
           </div>
 
@@ -38,12 +48,12 @@ export default function Footer() {
             <h4 className="footer-heading">Quick Links</h4>
             <ul className="footer-link-list">
               <li><Link href="/">Home</Link></li>
-              <li><Link href="/about">About Us</Link></li>
               <li><Link href="/products">Products & Formats</Link></li>
+              <li><Link href="/markets">Our Markets</Link></li>
               <li><Link href="/capabilities">Plant Capabilities</Link></li>
-              <li><Link href="/industries">Markets & Industries</Link></li>
+              <li><Link href="/gallery">Plant & Product Gallery</Link></li>
               <li><Link href="/quality">Quality & Assurance</Link></li>
-              <li><Link href="/gallery">Plant Gallery</Link></li>
+              <li><Link href="/about">About Us</Link></li>
               <li><Link href="/contact">Contact & RFQ</Link></li>
             </ul>
           </div>

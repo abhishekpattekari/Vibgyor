@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { ArrowUpRight, Menu, X, ChevronDown } from "lucide-react";
+import { ArrowUpRight, Download, Menu, X } from "lucide-react";
+import { downloadBrochure } from "@/lib/downloadBrochure";
 
 interface NavbarProps {
   initialScrolled?: boolean;
@@ -9,11 +10,11 @@ interface NavbarProps {
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
   { label: "Products", href: "/products" },
-  { label: "About", href: "/about" },
+  { label: "Our Markets", href: "/markets" },
   { label: "Capabilities", href: "/capabilities" },
-  { label: "Industries", href: "/industries" },
-  { label: "Quality", href: "/quality" },
   { label: "Gallery", href: "/gallery" },
+  { label: "Quality", href: "/quality" },
+  { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -37,6 +38,7 @@ export default function Navbar({ initialScrolled = false }: NavbarProps) {
 
   return (
     <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
+      {/* Brand / Logo */}
       <Link href="/" className="brand" aria-label="Vibgyor Print N Pack home">
         <img
           src="/images/logo.png"
@@ -44,11 +46,12 @@ export default function Navbar({ initialScrolled = false }: NavbarProps) {
           className="brand-mark"
         />
         <span className="brand-type">
-          <strong>Vibgyor</strong>
-          <small>PRINT N PACK</small>
+          <strong className="brand-title">Vibgyor</strong>
+          <span className="brand-subtitle">PRINT N PACK</span>
         </span>
       </Link>
 
+      {/* Desktop & Mobile Navigation */}
       <nav
         className={`desktop-nav ${menuOpen ? "mobile-open" : ""}`}
         aria-label="Primary navigation"
@@ -65,11 +68,36 @@ export default function Navbar({ initialScrolled = false }: NavbarProps) {
             </Link>
           );
         })}
+
+        {/* Mobile-only action buttons inside menu */}
+        <div className="mobile-menu-actions">
+          <button
+            onClick={downloadBrochure}
+            className="header-brochure-btn mobile-brochure"
+          >
+            <Download size={15} /> Download Brochure
+          </button>
+          <Link href="/contact" className="header-cta mobile-cta">
+            Request a quote <ArrowUpRight size={16} />
+          </Link>
+        </div>
       </nav>
 
-      <Link href="/contact" className="header-cta">
-        Request a quote <ArrowUpRight size={16} />
-      </Link>
+      {/* Header CTA Buttons */}
+      <div className="header-actions-group">
+        <button
+          onClick={downloadBrochure}
+          className="header-brochure-btn"
+          title="Download Official Vibgyor Brochure PDF"
+        >
+          <Download size={15} />
+          <span>Download Brochure</span>
+        </button>
+
+        <Link href="/contact" className="header-cta">
+          Request a quote <ArrowUpRight size={16} />
+        </Link>
+      </div>
 
       <button
         className="menu-toggle"

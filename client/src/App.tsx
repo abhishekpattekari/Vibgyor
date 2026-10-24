@@ -9,6 +9,7 @@ import AboutPage from "./pages/AboutPage";
 import ProductsPage from "./pages/ProductsPage";
 import CapabilitiesPage from "./pages/CapabilitiesPage";
 import IndustriesPage from "./pages/IndustriesPage";
+import MarketsPage from "./pages/MarketsPage";
 import QualityPage from "./pages/QualityPage";
 import GalleryPage from "./pages/GalleryPage";
 import ContactPage from "./pages/ContactPage";
@@ -20,7 +21,8 @@ function Router() {
       <Route path="/about" component={AboutPage} />
       <Route path="/products" component={ProductsPage} />
       <Route path="/capabilities" component={CapabilitiesPage} />
-      <Route path="/industries" component={IndustriesPage} />
+      <Route path="/markets" component={MarketsPage} />
+      <Route path="/industries" component={MarketsPage} />
       <Route path="/quality" component={QualityPage} />
       <Route path="/gallery" component={GalleryPage} />
       <Route path="/contact" component={ContactPage} />
