@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -37,6 +37,7 @@ const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent
 
 const ASSETS = {
   hero: "/images/hero-industrial.jpg",
+  heroVideo: "/video/video1.mp4",
   rolls: "/images/printed-rolls.jpg",
   pouches: "/images/pouch-formats.jpg",
   factory: "/images/factory-detail.jpg",
@@ -317,6 +318,13 @@ export default function Home() {
   const [submitted, setSubmitted] = useState(false);
   const [lightboxImage, setLightboxImage] = useState<(typeof lightboxImages)[number] | null>(null);
   const [lightboxZoom, setLightboxZoom] = useState(1);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 24);
@@ -379,7 +387,19 @@ export default function Home() {
           <div
             className="hero-media"
             style={{ backgroundImage: `url(${ASSETS.hero})` }}
-          />
+          >
+            <video
+              ref={videoRef}
+              className="hero-video"
+              src={ASSETS.heroVideo}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              poster={ASSETS.hero}
+            />
+          </div>
           <div className="hero-overlay" />
           <div className="hero-content page-width">
             <div className="hero-main-col">
