@@ -33,7 +33,7 @@ export const MARKETS_LIST: MarketSector[] = [
     title: "1. Snack Food Packaging",
     tagline: "High-barrier solutions tailored for snacks & extruded foods",
     description:
-      "RPPL provides high-performance solutions tailored for the snack food industry. High-barrier metalized films preserve crispness, prevent oil oxidation, and retain nitrogen flush integrity with vibrant rotogravure print brilliance.",
+      "Vibgyor Print N Pack provides high-performance solutions tailored for the snack food industry. High-barrier metalized films preserve crispness, prevent oil oxidation, and retain nitrogen flush integrity with vibrant rotogravure print brilliance.",
     image: "/images/potato-chips.jpg",
     keyPoints: [
       "Nitrogen flushing for zero pack collapse",
@@ -95,7 +95,7 @@ export const MARKETS_LIST: MarketSector[] = [
     title: "5. Flour, Pulses & Spices Packaging",
     tagline: "Heavy-gauge durability & taste-preserving barriers for staples",
     description:
-      "RPPL ensures that the natural taste and texture of products like flour, pulses, and spices are preserved through advanced multi-layer barrier laminates. Engineered to endure heavy bulk filling (5kg–10kg), transit drop impacts, aroma retention for ground spices, and transparent window visibility for grains and lentils.",
+      "Vibgyor Print N Pack ensures that the natural taste and texture of products like flour, pulses, and spices are preserved through advanced multi-layer barrier laminates. Engineered to endure heavy bulk filling (5kg–10kg), transit drop impacts, aroma retention for ground spices, and transparent window visibility for grains and lentils.",
     image: "/images/atta-packaging.jpg",
     secondaryImage: "/images/dal-pulses-packaging.jpg",
     keyPoints: [
@@ -120,6 +120,122 @@ export const MARKETS_LIST: MarketSector[] = [
       "Clean-room grade sterile barrier laminates",
     ],
     recommendedStructures: "Multi-barrier PET / Nylon / Chemical-Resistant PE",
+  },
+];
+
+export const FOOD_MARKETS = [
+  {
+    title: "Meats",
+    desc: "Fresh, chilled & frozen meats, bone-guard puncture resistance, hermetic vacuum pouches.",
+    tag: "High Puncture Barrier",
+  },
+  {
+    title: "Fish and shellfish",
+    desc: "Seafood, prawns, frozen fish fillets, anti-frost moisture barrier with odor confinement.",
+    tag: "Sub-Zero Moisture Seal",
+  },
+  {
+    title: "Cheeses",
+    desc: "Blocks, shredded & sliced cheeses, dairy-grade barriers balancing gas & moisture equilibrium.",
+    tag: "Gas Permeability Control",
+  },
+  {
+    title: "Sauces and liquids",
+    desc: "Pastes, ketchups, mayonnaise, liquid condiments in spouted stand-up pouches and sachets.",
+    tag: "Leak-Proof Seal Integrity",
+  },
+  {
+    title: "Confectionary and Bakery",
+    desc: "Chocolates, biscuits, cookies, cakes, wafers with aroma-lock and moisture-proof crunch retention.",
+    tag: "Aroma & Crunch Shield",
+  },
+  {
+    title: "Dry Foods",
+    desc: "Cereals, pasta, noodles, ready-to-cook mixes, grains with transparent viewing windows.",
+    tag: "Clarity & Shelf Appeal",
+  },
+  {
+    title: "Diet and Nutrition Supplements",
+    desc: "Whey protein, dietary formulations, vitamin powders with press-to-close airtight zipper locks.",
+    tag: "Hermetic Powder Seal",
+  },
+  {
+    title: "Cold cuts and Cured Sausages",
+    desc: "Sliced salami, pepperoni, cured meats with thermoforming vacuum laminates.",
+    tag: "Oxygen Barrier (OTR)",
+  },
+  {
+    title: "Fruit and vegetables",
+    desc: "IQF frozen green peas, sweet corn, fresh-cut produce, breathable and anti-fog laminates.",
+    tag: "Anti-Fog & Freeze Grade",
+  },
+  {
+    title: "Ready meals",
+    desc: "Retortable flexible packaging, heat-and-eat meals, microwaveable retort pouches.",
+    tag: "Retort & Thermal Resistance",
+  },
+  {
+    title: "Coffee, tea and cocoa",
+    desc: "Whole roasted beans, tea leaves, cocoa powder with degassing valves and light blackout pure foil.",
+    tag: "Degassing Valve & Foil",
+  },
+  {
+    title: "Nuts, pickles and condiments",
+    desc: "Roasted cashews, almonds, oil-rich pickles, high-acidity resistance preventing delamination.",
+    tag: "Oil & Acidity Resistant",
+  },
+  {
+    title: "Pet food",
+    desc: "Dry kibble, pet treats, wet food chunks in heavy-load zipper pouches with aroma containment.",
+    tag: "Drop & Odor Containment",
+  },
+  {
+    title: "Custom Food Packaging (etc.)",
+    desc: "Have a specialized recipe or food application? We engineer bespoke barrier structures tailored to your exact shelf-life needs.",
+    tag: "Custom Engineered Barrier",
+  },
+];
+
+export const NON_FOOD_MARKETS = [
+  {
+    title: "Automotive Products",
+    desc: "Greases, motor oils, engine lubricants, mechanical spare parts wrap with oil and tear resistance.",
+    tag: "Hydrocarbon & Puncture Barrier",
+  },
+  {
+    title: "Perfumery",
+    desc: "Scented wipes, fragrance sachets, cosmetic aroma-lock foil barriers preventing volatile dissipation.",
+    tag: "Zero Volatile Loss",
+  },
+  {
+    title: "Personal Care and Hygiene",
+    desc: "Shampoos, conditioners, liquid soaps, lotions, body wash spouted refill pouches and sachets.",
+    tag: "Surfactant & Chemical Resistance",
+  },
+  {
+    title: "Medical Supplies",
+    desc: "Sterile medical devices, surgical gloves, diagnostic kits, clean-room compliant hermetic barrier.",
+    tag: "Clean-Room Grade Barrier",
+  },
+  {
+    title: "Hardware",
+    desc: "Fasteners, screws, precision metal parts with puncture-proof and rust-preventive (VCI) films.",
+    tag: "Heavy-Duty & Rust Preventive",
+  },
+  {
+    title: "Cleaning products",
+    desc: "Detergent powders, dishwasher tabs, surface cleaner refills with aggressive surfactant resistance.",
+    tag: "Chemical & Moisture Proof",
+  },
+  {
+    title: "Chemical and biological products",
+    desc: "Agrochemicals, fertilizers, lab reagents, bio-cultures with certified multi-layer barrier films.",
+    tag: "Hazard-Safe Multi-Ply Barrier",
+  },
+  {
+    title: "Specialized Non-Food Applications (etc.)",
+    desc: "Need packaging for industrial, electronic, or specialty chemical items? Discuss your custom specifications with our team.",
+    tag: "Tailored Industrial Solutions",
   },
 ];
 
@@ -162,7 +278,7 @@ export default function MarketsPage() {
         </section>
 
         {/* Sectors Grid */}
-        <section className="section-pad page-width">
+        <section className="section-pad page-width" style={{ padding: "72px 0" }}>
           <div className="section-kicker">
             <span>01</span>
             <div />
@@ -171,7 +287,7 @@ export default function MarketsPage() {
           <div className="markets-title-row" style={{ marginBottom: "36px" }}>
             <div>
               <h2 className="section-title">
-                Six Focused Packaging <em>Market Solutions</em>
+                Market Solutions <em>by Industry</em>
               </h2>
               <p className="lead-text">
                 Every market sector has distinctive preservation needs. We formulate tailored barrier film combinations to maximize line performance and shelf impact.
@@ -239,7 +355,7 @@ export default function MarketsPage() {
         </section>
 
         {/* Dedicated Highlight Section for Flour, Pulses & Spices Packaging */}
-        <section className="section-pad dark-surface" id="flour-pulses-spices-spotlight">
+        <section className="section-pad dark-surface" id="flour-pulses-spices-spotlight" style={{ padding: "72px 0" }}>
           <div className="page-width">
             <div className="section-kicker light">
               <span>02</span>
@@ -252,7 +368,7 @@ export default function MarketsPage() {
                   Flour, Pulses & Spices Packaging: <em>Preserving Natural Taste & Texture</em>
                 </h2>
                 <p className="lead-text light" style={{ color: "rgba(255,255,255,0.75)" }}>
-                  RPPL ensures that the natural taste and texture of products like flour, pulses, and spices are protected against ambient moisture, transit stresses, and aroma loss.
+                  Vibgyor Print N Pack ensures that the natural taste and texture of products like flour, pulses, and spices are protected against ambient moisture, transit stresses, and aroma loss.
                 </p>
               </div>
             </div>
@@ -313,26 +429,106 @@ export default function MarketsPage() {
           </div>
         </section>
 
-        {/* RFQ CTA Section */}
-        <section className="section-pad page-width">
-          <div className="quote-banner">
+        {/* Comprehensive Market Directory: Food & Non-Food Packaged Products */}
+        <section className="section-pad page-width" id="market-directory" style={{ padding: "72px 0" }}>
+          <div className="section-kicker">
+            <span>03</span>
+            <div />
+            <span>Market Directory & Sector Applications</span>
+          </div>
+          <div className="markets-title-row" style={{ marginBottom: "32px" }}>
             <div>
-              <div className="eyebrow light">
-                <span className="eyebrow-rule" />
-                <span>Custom Substrate Engineering</span>
-              </div>
-              <h2>Have a Specific Product or Barrier Challenge?</h2>
-              <p>
-                Our technical team is ready to evaluate your product chemistry and design custom multi-ply laminate structures with trial rolls.
+              <h2 className="section-title">
+                Comprehensive Market Sectors: <em>Food & Non-Food Products</em>
+              </h2>
+              <p className="lead-text" style={{ maxWidth: "860px" }}>
+                Whether you need high-barrier vacuum films for meats and dairy, spouted pouches for liquid personal care, or heavy-duty puncture-resistant wraps for automotive and medical parts — Vibgyor Print N Pack provides certified, line-ready packaging for every sector.
               </p>
             </div>
-            <div className="quote-banner-actions">
-              <button onClick={downloadBrochure} className="button button-primary">
-                <Download size={16} /> Download Brochure PDF
-              </button>
-              <Link href="/contact" className="button button-ghost">
-                Discuss Your Requirements <ArrowUpRight size={16} />
+          </div>
+
+          {/* Group 1: Food Packaging Solutions */}
+          <div className="market-group-block">
+            <div className="market-group-header">
+              <div className="market-group-title-wrap">
+                <span className="market-group-badge">Category 01</span>
+                <h3>FOOD PACKAGING SOLUTIONS</h3>
+              </div>
+              <p>
+                Engineered with controlled gas transmission, aroma-lock barriers, nitrogen-flush stability, and grease-proof multi-layer laminates.
+              </p>
+            </div>
+
+            <div className="market-sub-grid">
+              {FOOD_MARKETS.map((item, idx) => (
+                <div key={idx} className="market-sub-card">
+                  <div className="market-sub-card-top">
+                    <span className="market-sub-index">{String(idx + 1).padStart(2, "0")}</span>
+                    <span className="market-sub-tag">{item.tag}</span>
+                  </div>
+                  <h4>{item.title}</h4>
+                  <p>{item.desc}</p>
+                  <Link href="/contact" className="market-sub-link">
+                    Discuss packaging for {item.title} →
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Group 2: Other Non-Food Packaged Products */}
+          <div className="market-group-block" style={{ marginTop: "48px" }}>
+            <div className="market-group-header non-food-header">
+              <div className="market-group-title-wrap">
+                <span className="market-group-badge non-food-badge">Category 02</span>
+                <h3>OTHER NON-FOOD PACKAGED PRODUCTS</h3>
+              </div>
+              <p>
+                Engineered for aggressive surfactant resistance, chemical containment, puncture protection, and sterile medical-grade barriers.
+              </p>
+            </div>
+
+            <div className="market-sub-grid">
+              {NON_FOOD_MARKETS.map((item, idx) => (
+                <div key={idx} className="market-sub-card">
+                  <div className="market-sub-card-top">
+                    <span className="market-sub-index">{String(idx + 1).padStart(2, "0")}</span>
+                    <span className="market-sub-tag non-food-tag">{item.tag}</span>
+                  </div>
+                  <h4>{item.title}</h4>
+                  <p>{item.desc}</p>
+                  <Link href="/contact" className="market-sub-link">
+                    Discuss packaging for {item.title} →
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Dedicated Discussion & Custom Substrate Engineering Callout */}
+          <div className="market-discuss-box">
+            <div className="market-discuss-content">
+              <span className="market-discuss-kicker">Custom Formulation &amp; Substrate Engineering</span>
+              <h3>Don’t See Your Specific Product Listed? Have a Barrier Challenge?</h3>
+              <p>
+                Whatever is not listed above, our engineering laboratory can formulate, laminate, and test customized barrier structures for your exact product specifications. Our technical team is ready to evaluate your product chemistry and design custom multi-ply laminate structures with trial rolls. <strong>Discuss it with Vibgyor Print N Pack</strong> to get trial rolls, barrier calculations, and custom factory quotes.
+              </p>
+            </div>
+            <div className="market-discuss-actions">
+              <Link href="/contact" className="button button-primary">
+                Discuss with Vibgyor Print N Pack <ArrowUpRight size={16} />
               </Link>
+              <a
+                href="https://wa.me/917558381231?text=Hello%20Vibgyor%20Print%20N%20Pack%2C%20I%20would%20like%20to%20discuss%20custom%20packaging%20for%20my%20product%20requirements."
+                target="_blank"
+                rel="noreferrer"
+                className="button button-whatsapp"
+              >
+                Chat on WhatsApp
+              </a>
+              <button onClick={downloadBrochure} className="button button-brochure">
+                <Download size={16} /> Download Full Brochure PDF
+              </button>
             </div>
           </div>
         </section>

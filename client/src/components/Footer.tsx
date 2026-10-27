@@ -20,8 +20,7 @@ export default function Footer() {
                 className="brand-mark"
               />
               <span className="brand-type">
-                <strong className="brand-title">Vibgyor</strong>
-                <span className="brand-subtitle">PRINT N PACK</span>
+                <strong className="brand-title">Vibgyor Print N Pack</strong>
               </span>
             </Link>
             <p className="footer-tagline">

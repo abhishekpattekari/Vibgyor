@@ -177,72 +177,68 @@ export default function ProductsPage() {
             <span>Product Formats</span>
           </div>
           <h2 className="section-title">Engineered Substrates & Finished Packs</h2>
+          <p className="lead-text" style={{ maxWidth: "780px", marginBottom: "20px" }}>
+            Explore our complete product formats below. All three product lines are engineered in-house for seamless high-speed filling line runnability, shelf appeal, and maximum barrier protection.
+          </p>
 
-          {/* Interactive Navigation */}
-          <div className="product-tab-buttons">
+
+          {/* 3 Products In Line (Scroll Stream) */}
+          <div className="products-stream-container">
             {PRODUCTS.map((prod) => (
-              <button
-                key={prod.id}
-                onClick={() => setSelectedProduct(prod)}
-                className={`product-nav-btn ${selectedProduct.id === prod.id ? "is-active" : ""}`}
-              >
-                <span className="prod-btn-index">{prod.index}</span>
-                <span className="prod-btn-info">
-                  <strong>{prod.title}</strong>
-                  <small>{prod.badge}</small>
-                </span>
-              </button>
+              <div key={prod.id} id={`format-${prod.index}`} className="product-showcase-box product-stream-item">
+                <div className="showcase-visual">
+                  <img src={prod.image} alt={prod.title} loading="lazy" />
+                  <div className="showcase-badge">{prod.badge}</div>
+                </div>
+
+                <div className="showcase-details">
+                  <span className="showcase-kicker">Format {prod.index} / 03</span>
+                  <h3>{prod.title}</h3>
+                  <p className="showcase-subtitle">{prod.subtitle}</p>
+                  <p className="showcase-desc">{prod.description}</p>
+
+                  <div className="showcase-features">
+                    <h4>Key Capabilities & Highlights</h4>
+                    <ul>
+                      {prod.features.map((feat, idx) => (
+                        <li key={idx}>
+                          <Check size={16} className="check-icon" />
+                          <span>{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="showcase-meta">
+                    <div>
+                      <strong>Common Applications:</strong>
+                      <span>{prod.applications}</span>
+                    </div>
+                    <div>
+                      <strong>Available Laminate Structures:</strong>
+                      <span>{prod.substrates}</span>
+                    </div>
+                  </div>
+
+                  <div className="showcase-actions">
+                    <Link href="/contact" className="button button-primary">
+                      Request Specifications & Quote <ArrowUpRight size={16} />
+                    </Link>
+                    <button onClick={downloadBrochure} className="button button-secondary">
+                      <Download size={16} /> Download Brochure PDF
+                    </button>
+                    <a
+                      href={`https://wa.me/917558381231?text=Hello%20Vibgyor%20Print%20N%20Pack%2C%20I%20am%20interested%20in%20Format%20${prod.index}%20-%20${encodeURIComponent(prod.title)}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="button button-whatsapp"
+                    >
+                      Enquire on WhatsApp
+                    </a>
+                  </div>
+                </div>
+              </div>
             ))}
-          </div>
-
-          {/* Detailed Product Card */}
-          <div className="product-showcase-box">
-            <div className="showcase-visual">
-              <img src={selectedProduct.image} alt={selectedProduct.title} />
-              <div className="showcase-badge">{selectedProduct.badge}</div>
-            </div>
-
-            <div className="showcase-details">
-              <span className="showcase-kicker">Format {selectedProduct.index} / 03</span>
-              <h3>{selectedProduct.title}</h3>
-              <p className="showcase-subtitle">{selectedProduct.subtitle}</p>
-              <p className="showcase-desc">{selectedProduct.description}</p>
-
-              <div className="showcase-features">
-                <h4>Key Capabilities & Highlights</h4>
-                <ul>
-                  {selectedProduct.features.map((feat, idx) => (
-                    <li key={idx}>
-                      <Check size={16} className="check-icon" />
-                      <span>{feat}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="showcase-meta">
-                <div>
-                  <strong>Common Applications:</strong>
-                  <span>{selectedProduct.applications}</span>
-                </div>
-                <div>
-                  <strong>Available Laminate Structures:</strong>
-                  <span>{selectedProduct.substrates}</span>
-                </div>
-              </div>
-
-              <div className="showcase-actions">
-                <Link href="/contact" className="button button-primary">
-                  Request Specifications & Quote <ArrowUpRight size={16} />
-                </Link>
-                <button onClick={downloadBrochure} className="button button-secondary">
-                  <Download size={16} /> Download Brochure PDF
-                </button>
-                <a href="https://wa.me/917558381231" target="_blank" rel="noreferrer" className="button button-whatsapp">
-                  Enquire on WhatsApp
-                </a>
-              </div>
-            </div>
           </div>
         </section>
 

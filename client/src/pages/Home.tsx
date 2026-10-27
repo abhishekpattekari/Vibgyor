@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
 import GoogleMapEmbed from "@/components/GoogleMapEmbed";
+import OurMarketsSection from "@/components/OurMarketsSection";
 import { downloadBrochure } from "@/lib/downloadBrochure";
 import {
   ArrowUpRight,
@@ -441,10 +442,10 @@ export default function Home() {
             </h2>
             <div className="intro-copy">
               <p className="lead">
-                Vibgyor Print N Pack is a flexible laminated packaging manufacturer based in Maharashtra, India. We create dependable printed and laminated packaging for businesses that need consistency from first specification to final dispatch.
+                <strong>Vibgyor Print N Pack</strong>, formerly known as <strong>Atharva Industries</strong> (established in 2017), is a reputed manufacturer of multi-layer, multi-colour laminated flexible packaging materials and pouches operating from a modern facility at MIDC, Ahmednagar-Sambhajinagar Road, Maharashtra.
               </p>
               <p>
-                Our customer-focused approach brings rotogravure printing, lamination, slitting, and pouch making together for food, agriculture, frozen food, personal care, wellness, and other growing industries.
+                Our strategic location provides excellent connectivity to major industrial hubs such as Ahilyanagar, Chhatrapati Sambhajinagar, Pune, Mumbai, Solapur, and Nashik. We deliver end-to-end solutions in both roll and pouch formats using PET, BOPP, CPP, co-extruded multi-layer LDPE/HDPE blends, and aluminium foil with robust year-round capacity.
               </p>
               <button
                 className="text-link dark"
@@ -620,6 +621,9 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Our Markets Section */}
+        <OurMarketsSection />
 
         <section className="capabilities-section section-pad" id="capabilities">
           <div className="page-width">

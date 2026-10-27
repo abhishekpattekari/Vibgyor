@@ -160,6 +160,25 @@ export default function OurMarketsSection() {
             </div>
           ))}
         </div>
+
+        {/* Categories Quick List & Discussion Box */}
+        <div className="market-discuss-box" style={{ marginTop: "40px" }}>
+          <div className="market-discuss-content">
+            <span className="market-discuss-kicker">Extensive Food & Non-Food Applications</span>
+            <h3>Catering to Meats, Dairy, Confectionery, Personal Care, Medical & More</h3>
+            <p>
+              We manufacture flexible barrier packaging for fresh & frozen meats, fish, cheeses, sauces & liquids, bakery, dry foods, nutrition supplements, cold cuts, fruits & vegetables, ready meals, coffee & tea, pet foods, automotive products, perfumery, medical supplies, hardware, cleaning products, agrochemicals, and more.
+            </p>
+          </div>
+          <div className="market-discuss-actions">
+            <Link href="/markets" className="button button-primary">
+              View All Market Sectors <ArrowUpRight size={16} />
+            </Link>
+            <Link href="/contact" className="button button-secondary">
+              Discuss with Vibgyor Print N Pack <ArrowUpRight size={16} />
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   );

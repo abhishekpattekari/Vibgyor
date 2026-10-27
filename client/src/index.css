@@ -1,5 +1,5 @@
 /* Material Intelligence style: warm mineral surfaces, Vibgyor cobalt anchors, saffron utility accents, Swiss-editorial asymmetry, and tactile material-led depth. */
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,700&family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Poppins:wght@600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -17,7 +17,7 @@
   --white: #fcfbf8;
   --radius: 2px;
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-  --background: oklch(0.96 0.01 85);
+  --background: oklch(37.548% 0.07259 75.901);
   --foreground: oklch(0.23 0.02 70);
   --card: oklch(0.98 0.006 85);
   --card-foreground: oklch(0.23 0.02 70);
@@ -153,28 +153,34 @@ img {
 .brand-type {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  line-height: 1.1;
+  gap: 1px;
+  line-height: 1.08;
+  font-family: "Playfair Display", "Fraunces", Georgia, serif;
 }
 
+.brand strong,
+.brand-title,
 .brand-type strong,
 .brand-type .brand-title {
-  font-family: "Manrope", system-ui, -apple-system, sans-serif !important;
-  font-weight: 800;
-  font-size: 26px;
-  letter-spacing: -0.02em;
+  font-family: "Playfair Display", "Fraunces", Georgia, serif !important;
+  font-weight: 800 !important;
+  font-size: 23px;
+  letter-spacing: -0.015em;
   color: inherit;
+  white-space: nowrap;
 }
 
+.brand small,
+.brand-subtitle,
 .brand-type small,
 .brand-type .brand-subtitle {
-  font-family: "Manrope", system-ui, -apple-system, sans-serif !important;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
+  font-family: "Playfair Display", "Fraunces", Georgia, serif !important;
+  font-size: 11px;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em;
   margin-top: 1px;
-  opacity: 0.85;
-  text-transform: uppercase;
+  opacity: 0.9;
+  text-transform: none;
 }
 
 .desktop-nav {
@@ -1704,12 +1710,12 @@ h2 {
 
   .brand-type strong,
   .brand-type .brand-title {
-    font-size: 21px;
+    font-size: 17px;
   }
 
   .brand-type small,
   .brand-type .brand-subtitle {
-    font-size: 8.5px;
+    font-size: 9.5px;
   }
 
   .header-cta {
@@ -3723,6 +3729,52 @@ h2 {
   opacity: 0.75;
 }
 
+.products-stream-container {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  margin-top: 24px;
+}
+
+.product-stream-item {
+  scroll-margin-top: 100px;
+}
+
+.product-quick-jump-bar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 12px 18px;
+  background: var(--paper-deep);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin: 16px 0 28px;
+}
+
+.product-quick-anchor {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.product-quick-anchor:hover {
+  background: var(--cobalt);
+  color: #ffffff;
+  border-color: var(--cobalt);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(23, 60, 117, 0.2);
+}
+
 .product-showcase-box {
   display: grid;
   grid-template-columns: 1fr 1.15fr;
@@ -4651,6 +4703,7 @@ h2 {
   .header-actions-group {
     display: none;
   }
+
   .mobile-menu-actions {
     display: flex;
   }
@@ -4718,10 +4771,12 @@ h2 {
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
   }
+
   70% {
     transform: scale(1);
     box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
   }
+
   100% {
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
@@ -4846,7 +4901,7 @@ h2 {
   position: absolute;
   inset: 0;
   background: radial-gradient(circle, transparent 40%, rgba(15, 23, 34, 0.75) 100%),
-              linear-gradient(to right, transparent 75%, rgba(15, 23, 34, 0.95) 100%);
+    linear-gradient(to right, transparent 75%, rgba(15, 23, 34, 0.95) 100%);
   pointer-events: none;
 }
 
@@ -5096,12 +5151,15 @@ h2 {
   .video-reel-inner {
     grid-template-columns: 1fr;
   }
+
   .video-stage {
     min-height: 280px;
   }
+
   .video-stage-vignette {
     background: linear-gradient(to top, rgba(15, 23, 34, 0.9) 0%, transparent 70%);
   }
+
   .video-info-overlay {
     padding: 24px 20px;
   }
@@ -5410,6 +5468,7 @@ h2 {
   .map-frame-wrapper {
     height: 520px;
   }
+
   .map-info-floating-card {
     position: relative;
     top: auto;
@@ -5525,4 +5584,298 @@ h2 {
   background: #e4932d;
   color: #111a26;
   border-color: #e4932d;
+}
+
+/* =============================================================================
+   COMPREHENSIVE MARKET DIRECTORY (FOOD & NON-FOOD) & DISCUSSION BOX
+   ============================================================================= */
+.market-group-block {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 36px 32px;
+  box-shadow: 0 4px 20px rgba(15, 25, 34, 0.04);
+}
+
+.market-group-header {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 20px;
+  margin-bottom: 28px;
+}
+
+.market-group-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.market-group-badge {
+  background: var(--cobalt);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.market-group-badge.non-food-badge {
+  background: #0f294f;
+}
+
+.market-group-header h3 {
+  font: 700 24px/1.15 "Playfair Display", "Fraunces", serif;
+  color: var(--ink);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.market-group-header p {
+  color: var(--ink-soft);
+  font-size: 14px;
+  margin: 0;
+  max-width: 720px;
+}
+
+.market-sub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.market-sub-card {
+  background: var(--paper);
+  border: 1px solid rgba(27, 32, 36, 0.08);
+  border-radius: 8px;
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.market-sub-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--cobalt);
+  box-shadow: 0 8px 24px rgba(23, 60, 117, 0.1);
+  background: #ffffff;
+}
+
+.market-sub-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.market-sub-index {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--saffron);
+}
+
+.market-sub-tag {
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--cobalt);
+  background: rgba(23, 60, 117, 0.08);
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+
+.market-sub-tag.non-food-tag {
+  color: #0f294f;
+  background: rgba(15, 41, 79, 0.08);
+}
+
+.market-sub-card h4 {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+
+.market-sub-card p {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin: 0 0 14px;
+  flex: 1;
+}
+
+.market-sub-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--cobalt);
+  text-decoration: none;
+  transition: color 0.15s ease;
+  margin-top: auto;
+}
+
+.market-sub-link:hover {
+  color: var(--saffron);
+  text-decoration: underline;
+}
+
+/* Discussion Callout Box */
+.market-discuss-box {
+  margin-top: 40px;
+  background: linear-gradient(135deg, #0f294f 0%, #173c75 100%);
+  border-radius: 12px;
+  padding: 40px 38px;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 36px;
+  box-shadow: 0 16px 36px rgba(15, 41, 79, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.market-discuss-kicker {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #e4932d;
+  margin-bottom: 10px;
+}
+
+.market-discuss-content h3 {
+  font: 700 clamp(22px, 3vw, 32px)/1.2 "Playfair Display", "Fraunces", serif;
+  margin: 0 0 12px;
+  color: #ffffff;
+}
+
+.market-discuss-content p {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0;
+  max-width: 680px;
+}
+
+.market-discuss-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-shrink: 0;
+  min-width: 270px;
+}
+
+.market-discuss-actions .button {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Button & Banner Utilities */
+.button-whatsapp {
+  background: #188b55 !important;
+  color: #ffffff !important;
+  border: 1px solid #15794a !important;
+}
+
+.button-whatsapp:hover {
+  background: #126e42 !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(24, 139, 85, 0.35);
+}
+
+.button-brochure {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.32) !important;
+  backdrop-filter: blur(8px);
+}
+
+.button-brochure:hover {
+  background: rgba(255, 255, 255, 0.24) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+}
+
+.button-secondary {
+  background: rgba(255, 255, 255, 0.14) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  backdrop-filter: blur(8px);
+}
+
+.button-secondary:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+}
+
+.button-ghost {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  backdrop-filter: blur(6px);
+}
+
+.button-ghost:hover {
+  background: rgba(255, 255, 255, 0.22) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+}
+
+.quote-banner {
+  background: linear-gradient(135deg, #0f294f 0%, #173c75 100%);
+  border-radius: 12px;
+  padding: 44px 40px;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  box-shadow: 0 16px 36px rgba(15, 41, 79, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.quote-banner h2 {
+  font: 700 clamp(24px, 3.2vw, 34px)/1.2 "Playfair Display", "Fraunces", serif;
+  color: #ffffff;
+  margin: 10px 0 12px;
+}
+
+.quote-banner p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  max-width: 660px;
+}
+
+.quote-banner-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 860px) {
+  .market-discuss-box,
+  .quote-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px 24px;
+  }
+  .market-discuss-actions,
+  .quote-banner-actions {
+    width: 100%;
+  }
+  .market-group-block {
+    padding: 24px 18px;
+  }
 }
