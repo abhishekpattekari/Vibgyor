@@ -17,13 +17,13 @@ export default function GoogleMapEmbed({
   const fullAddress =
     "Plot No. B-26/1, MIDC, Shingave Tukai, Tal. Newasa, Dist. Ahmednagar – 414607, Maharashtra, India";
 
-  const googleMapsDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
-    "Plot No. B-26/1, MIDC, Shingave Tukai, Tal. Newasa, Dist. Ahmednagar 414607"
-  )}`;
+  const companyMapsUrl = "https://maps.app.goo.gl/yWSN8N8n1H4SEje57?g_st=iw";
+
+  const googleMapsDirectionsUrl = companyMapsUrl;
 
   const embedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(
-    "Plot No. B-26/1, MIDC, Shingave Tukai, Newasa, Ahmednagar 414607"
-  )}&t=m&z=14&ie=UTF8&iwloc=&output=embed`;
+    "VIBGYOR Print N Pack, Plot No. B-26/1, MIDC, Shingve Tukai, Tal. Newasa, Dist. Ahilyanagar, Maharashtra 414607"
+  )}&t=m&z=15&ie=UTF8&iwloc=&output=embed`;
 
   return (
     <div className={`plant-map-container ${className}`}>

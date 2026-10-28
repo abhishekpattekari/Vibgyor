@@ -6,6 +6,7 @@ import FloatingActions from "@/components/FloatingActions";
 import GoogleMapEmbed from "@/components/GoogleMapEmbed";
 import OurMarketsSection from "@/components/OurMarketsSection";
 import { downloadBrochure } from "@/lib/downloadBrochure";
+import { sendWhatsAppEnquiry } from "@/lib/sendWhatsAppEnquiry";
 import {
   ArrowUpRight,
   Check,
@@ -322,8 +323,40 @@ export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {});
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
+
+    const attemptPlay = () => {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          const unlock = () => {
+            video.play().catch(() => {});
+            window.removeEventListener("touchstart", unlock);
+            window.removeEventListener("touchend", unlock);
+            window.removeEventListener("click", unlock);
+            window.removeEventListener("scroll", unlock);
+          };
+          window.addEventListener("touchstart", unlock, { once: true, passive: true });
+          window.addEventListener("touchend", unlock, { once: true, passive: true });
+          window.addEventListener("click", unlock, { once: true, passive: true });
+          window.addEventListener("scroll", unlock, { once: true, passive: true });
+        });
+      }
+    };
+
+    if (video.readyState >= 2) {
+      attemptPlay();
+    } else {
+      video.addEventListener("loadeddata", attemptPlay, { once: true });
+      video.addEventListener("canplay", attemptPlay, { once: true });
+      attemptPlay();
     }
   }, []);
 
@@ -370,12 +403,62 @@ export default function Home() {
     window.location.href = "tel:+917558381231";
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleQuoteSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const fd = new FormData(event.currentTarget);
+    const name = String(fd.get("quote-name") || "");
+    const company = String(fd.get("quote-company") || "");
+    const mobile = String(fd.get("quote-mobile") || "");
+    const email = String(fd.get("quote-email") || "");
+    const product = String(fd.get("quote-product") || "");
+    const format = String(fd.get("quote-format") || "");
+    const quantity = String(fd.get("quote-quantity") || "");
+
+    sendWhatsAppEnquiry({
+      source: "Home Page - Request a Quote Section",
+      name,
+      company,
+      mobile,
+      email,
+      product,
+      format,
+      quantity,
+    });
+
+    toast.success("Enquiry sent! Opening WhatsApp...", {
+      description: "Your packaging enquiry has been formatted and opened directly in WhatsApp.",
+    });
+  };
+
+  const handleContactSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const fd = new FormData(event.currentTarget);
+    const name = String(fd.get("name") || "");
+    const company = String(fd.get("company") || "");
+    const mobile = String(fd.get("mobile") || "");
+    const email = String(fd.get("email") || "");
+    const format = String(fd.get("format") || "");
+    const structure = String(fd.get("structure") || "");
+    const quantity = String(fd.get("quantity") || "");
+    const printing = String(fd.get("printing") || "");
+    const message = String(fd.get("message") || "");
+
+    sendWhatsAppEnquiry({
+      source: "Home Page - Project Brief Section",
+      name,
+      company,
+      mobile,
+      email,
+      format,
+      structure,
+      quantity,
+      printing,
+      message,
+    });
+
     setSubmitted(true);
-    toast.success("Thanks — your enquiry is ready for the Vibgyor team.", {
-      description:
-        "We’ll review your structure and respond with the next step.",
+    toast.success("Enquiry sent! Opening WhatsApp...", {
+      description: "Your project brief has been formatted and opened directly in WhatsApp.",
     });
   };
 
@@ -387,7 +470,7 @@ export default function Home() {
         <section className="hero-section">
           <div
             className="hero-media"
-            style={{ backgroundImage: `url(${ASSETS.hero})` }}
+            style={{ backgroundColor: "#081527" }}
           >
             <video
               ref={videoRef}
@@ -398,7 +481,6 @@ export default function Home() {
               muted
               playsInline
               preload="auto"
-              poster={ASSETS.hero}
             />
           </div>
           <div className="hero-overlay" />
@@ -414,7 +496,17 @@ export default function Home() {
                 High-quality printed and laminated flexible packaging solutions for food, agriculture, frozen food, personal care and other growing industries.
               </p>
               <div className="hero-actions">
-
+                <Link href="/contact" className="button button-primary hero-btn-quote">
+                  Request a quote <ArrowUpRight size={16} />
+                </Link>
+                <button
+                  type="button"
+                  onClick={downloadBrochure}
+                  className="button hero-btn-brochure"
+                  title="Download Official Vibgyor Brochure PDF"
+                >
+                  <Download size={16} /> Download Brochure
+                </button>
                 <Link href="/products" className="text-link light">
                   <PlayCircle size={18} /> Explore products
                 </Link>
@@ -426,7 +518,17 @@ export default function Home() {
             <div className="hero-note">
               <span className="status-dot" /> Manufacturing Facility · MIDC Shingave Tukai
             </div>
-            <p>Plot No. B-26/1, MIDC, Shingave Tukai, Tal. Newasa, Dist. Ahmednagar – 414607, Maharashtra, India</p>
+            <p>
+              <a
+                href="https://maps.app.goo.gl/yWSN8N8n1H4SEje57?g_st=iw"
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: "inherit", textDecoration: "underline", textUnderlineOffset: "3px" }}
+                title="Open factory location in Google Maps"
+              >
+                Plot No. B-26/1, MIDC, Shingave Tukai, Tal. Newasa, Dist. Ahmednagar – 414607, Maharashtra, India
+              </a>
+            </p>
           </div>
         </section>
 
@@ -895,7 +997,7 @@ export default function Home() {
               <h2>Let’s Build the Right Packaging Solution <em>for Your Product</em></h2>
               <p className="quote-page-copy">Share the essential details of your packaging requirement and our team can start the conversation around the right format, structure, and quantity.</p>
             </div>
-            <form className="quote-form quote-page-form" onSubmit={handleSubmit}>
+            <form className="quote-form quote-page-form" onSubmit={handleQuoteSubmit}>
               <div className="form-two-column">
                 <label>Name *<input name="quote-name" placeholder="Your name" required /></label>
                 <label>Company *<input name="quote-company" placeholder="Company name" required /></label>
@@ -937,7 +1039,7 @@ export default function Home() {
                   <MapPin size={17} /> Plot No. B-26/1, MIDC, Shingave Tukai, Tal. Newasa, Dist. Ahmednagar – 414607, Maharashtra, India
                 </span>
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=Plot+No.+B-26%2F1%2C+MIDC%2C+Shingave+Tukai%2C+Tal.+Newasa%2C+Dist.+Ahmednagar%2C+Maharashtra+414607%2C+India"
+                  href="https://maps.app.goo.gl/yWSN8N8n1H4SEje57?g_st=iw"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -969,7 +1071,7 @@ export default function Home() {
                 </button>
               </div>
             </div>
-            <form className="quote-form" onSubmit={handleSubmit}>
+            <form className="quote-form" onSubmit={handleContactSubmit}>
               <div className="form-heading">
                 <span>Project brief</span>
                 <small>Fields marked * are required</small>
@@ -1065,9 +1167,7 @@ export default function Home() {
                 <Send size={16} />
               </button>
               <p className="form-note">
-                <FileText size={13} /> This demo form confirms the enquiry in
-                the browser. Add an official email, CRM, or form endpoint before
-                launch.
+                <WhatsAppIcon size={14} /> Submitting this form opens WhatsApp directly with your formatted enquiry details for instant quotation response.
               </p>
             </form>
           </div>

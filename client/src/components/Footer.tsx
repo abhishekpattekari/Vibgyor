@@ -75,9 +75,14 @@ export default function Footer() {
             <h4 className="footer-heading">Manufacturing Plant</h4>
             <div className="footer-contact-item">
               <MapPin size={18} className="footer-icon" />
-              <span>
+              <a
+                href="https://maps.app.goo.gl/yWSN8N8n1H4SEje57?g_st=iw"
+                target="_blank"
+                rel="noreferrer"
+                title="View Vibgyor Print N Pack on Google Maps"
+              >
                 Plot No. B-26/1, MIDC, Shingave Tukai, Tal. Newasa, Dist. Ahmednagar – 414607, Maharashtra, India
-              </span>
+              </a>
             </div>
             <div className="footer-contact-item">
               <Phone size={16} className="footer-icon" />

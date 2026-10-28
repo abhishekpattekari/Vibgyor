@@ -6,9 +6,11 @@ import GoogleMapEmbed from "@/components/GoogleMapEmbed";
 import { toast } from "sonner";
 import { Phone, Mail, MapPin, Send, CheckCircle2, Clock, ArrowUpRight, Download } from "lucide-react";
 import { downloadBrochure } from "@/lib/downloadBrochure";
+import { sendWhatsAppEnquiry } from "@/lib/sendWhatsAppEnquiry";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submittedWhatsAppUrl, setSubmittedWhatsAppUrl] = useState<string>("");
   const [formData, setFormData] = useState({
     name: "",
     company: "",
@@ -31,9 +33,20 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const url = sendWhatsAppEnquiry({
+      source: "Contact Page - Technical RFQ Form",
+      name: formData.name,
+      company: formData.company,
+      mobile: formData.phone,
+      email: formData.email,
+      format: formData.format,
+      quantity: formData.volume,
+      message: formData.message,
+    });
+    setSubmittedWhatsAppUrl(url);
     setSubmitted(true);
-    toast.success("Thank you! Your quotation enquiry has been sent.", {
-      description: "Our packaging technical team will review your specifications and get in touch promptly.",
+    toast.success("Enquiry ready! Opening WhatsApp...", {
+      description: "Your quotation specifications have been formatted and opened directly in WhatsApp.",
     });
   };
 
@@ -136,13 +149,30 @@ export default function ContactPage() {
                   <h4>Manufacturing Plant Location</h4>
                 </div>
                 <p>
-                  Plot No. B-26/1, MIDC, Shingave Tukai, Tal. Newasa, Dist. Ahmednagar – 414607, Maharashtra, India
+                  <a
+                    href="https://maps.app.goo.gl/yWSN8N8n1H4SEje57?g_st=iw"
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{ color: "inherit", textDecoration: "underline", textUnderlineOffset: "3px" }}
+                    title="Open Vibgyor Print N Pack on Google Maps"
+                  >
+                    Plot No. B-26/1, MIDC, Shingave Tukai, Tal. Newasa, Dist. Ahmednagar – 414607, Maharashtra, India
+                  </a>
                 </p>
                 <div className="p-addr-meta">
                   <span>Industrial Zone: MIDC Shingave Tukai</span>
                   <span>State: Maharashtra (Western India Hub)</span>
                 </div>
-                <div style={{ marginTop: "14px" }}>
+                <div style={{ marginTop: "14px", display: "grid", gap: "8px" }}>
+                  <a
+                    href="https://maps.app.goo.gl/yWSN8N8n1H4SEje57?g_st=iw"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="button button-outline"
+                    style={{ width: "100%", justifyContent: "center" }}
+                  >
+                    <MapPin size={15} /> Open in Google Maps <ArrowUpRight size={14} />
+                  </a>
                   <button onClick={downloadBrochure} className="button button-secondary" style={{ width: "100%" }}>
                     <Download size={15} /> Download Plant Brochure PDF
                   </button>
@@ -161,17 +191,29 @@ export default function ContactPage() {
                 {submitted ? (
                   <div className="rfq-success-message">
                     <CheckCircle2 size={48} className="success-icon" />
-                    <h4>Enquiry Submitted Successfully!</h4>
+                    <h4>Enquiry Sent to WhatsApp!</h4>
                     <p>
-                      Thank you, <strong>{formData.name}</strong>. Our technical packaging team has received your details and will get back to you shortly at <strong>{formData.phone || formData.email}</strong>.
+                      Thank you, <strong>{formData.name}</strong>. Your enquiry details have been formatted and directed to our official WhatsApp (+91 75583 81231).
                     </p>
-                    <button
-                      onClick={() => setSubmitted(false)}
-                      className="button button-secondary"
-                      style={{ marginTop: "16px" }}
-                    >
-                      Submit Another Requirement
-                    </button>
+                    <div style={{ marginTop: "16px", display: "flex", gap: "10px", justifyContent: "center", flexWrap: "wrap" }}>
+                      {submittedWhatsAppUrl && (
+                        <a
+                          href={submittedWhatsAppUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="button button-primary"
+                          style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}
+                        >
+                          <WhatsAppOriginalIcon size={18} /> Open WhatsApp Chat
+                        </a>
+                      )}
+                      <button
+                        onClick={() => setSubmitted(false)}
+                        className="button button-secondary"
+                      >
+                        Submit Another Requirement
+                      </button>
+                    </div>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="rfq-form">
@@ -279,7 +321,7 @@ export default function ContactPage() {
                       <Send size={16} /> Submit Project Brief
                     </button>
                     <small className="form-privacy-note">
-                      Your information is kept strictly confidential and used solely to prepare your technical quotation.
+                      Your enquiry details will be opened directly in WhatsApp (+91 75583 81231) for an instant quotation and technical review.
                     </small>
                   </form>
                 )}

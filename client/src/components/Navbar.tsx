@@ -70,12 +70,6 @@ export default function Navbar({ initialScrolled = false }: NavbarProps) {
 
         {/* Mobile-only action buttons inside menu */}
         <div className="mobile-menu-actions">
-          <button
-            onClick={downloadBrochure}
-            className="header-brochure-btn mobile-brochure"
-          >
-            <Download size={15} /> Download Brochure
-          </button>
           <Link href="/contact" className="header-cta mobile-cta">
             Request a quote <ArrowUpRight size={16} />
           </Link>

@@ -269,8 +269,7 @@ img {
 
 .hero-media {
   z-index: -2;
-  background-position: center;
-  background-size: cover;
+  background-color: #081527;
   overflow: hidden;
 }
 
@@ -376,6 +375,33 @@ h3 em {
   flex-wrap: wrap;
   gap: 16px;
   margin-top: 22px;
+}
+
+.hero-btn-brochure {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #dc2626 !important;
+  border: 1px solid #b91c1c !important;
+  color: #ffffff !important;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 14px rgba(220, 38, 38, 0.35);
+  transition: all 0.2s ease;
+}
+
+.hero-btn-brochure:hover {
+  background: #b91c1c !important;
+  color: #ffffff !important;
+  border-color: #991b1b !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.5);
+}
+
+.hero-btn-quote {
+  box-shadow: 0 4px 16px rgba(228, 147, 45, 0.35);
 }
 
 .hero-feature-card {
@@ -2887,8 +2913,8 @@ h2 {
 
 @media (max-width: 720px) {
   .hero-media {
-    background-position: center center;
-    background-size: cover;
+    background-color: #081527;
+    background-image: none !important;
     min-height: 100%;
   }
 
