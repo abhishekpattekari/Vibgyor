@@ -27,7 +27,7 @@ export default function AboutPage() {
               About Vibgyor <em>Print N Pack</em>
             </h1>
             <p className="page-hero-sub">
-              Formerly known as Atharva Industries — a reputed manufacturer of multi-layer, multi-colour laminated flexible packaging materials and pouches operating from MIDC, Ahmednagar-Sambhajinagar Road, Maharashtra.
+              A reputed manufacturer of multi-layer, multi-colour laminated flexible packaging materials and pouches operating from MIDC, Ahmednagar-Sambhajinagar Road, Maharashtra.
             </p>
           </div>
         </section>
@@ -47,16 +47,13 @@ export default function AboutPage() {
                 <span style={{ background: "var(--cobalt)", color: "#fff", padding: "5px 12px", borderRadius: "4px", fontSize: "11px", fontWeight: "800", letterSpacing: "0.06em", textTransform: "uppercase" }}>
                   Est. 2017
                 </span>
-                <span style={{ background: "var(--paper-deep)", border: "1px solid var(--line)", padding: "5px 12px", borderRadius: "4px", fontSize: "11px", fontWeight: "700", color: "var(--ink)" }}>
-                  Formerly Known as Atharva Industries
-                </span>
                 <span style={{ background: "#fef3c7", border: "1px solid #fde68a", padding: "5px 12px", borderRadius: "4px", fontSize: "11px", fontWeight: "700", color: "#92400e" }}>
                   MIDC Ahmednagar-Sambhajinagar Road
                 </span>
               </div>
 
               <p className="lead-text" style={{ fontSize: "16px", lineHeight: "1.7", color: "var(--ink)", marginBottom: "16px" }}>
-                <strong>VIBGYOR PRINT N PACK</strong>, formerly known as <strong>Atharva Industries</strong>, is a reputed manufacturer of multi-layer, multi-colour laminated flexible packaging materials and pouches. Established in 2017, the company operates from a modern, fully-equipped facility located at MIDC, Ahmednagar-Sambhajinagar Road, Maharashtra.
+                <strong>VIBGYOR PRINT N PACK</strong> is a reputed manufacturer of multi-layer, multi-colour laminated flexible packaging materials and pouches. Established in 2017, the company operates from a modern, fully-equipped facility located at MIDC, Ahmednagar-Sambhajinagar Road, Maharashtra.
               </p>
 
               <p style={{ fontSize: "15px", lineHeight: "1.7", color: "var(--ink-soft)", margin: "0 0 16px" }}>

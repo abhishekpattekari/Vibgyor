@@ -544,7 +544,7 @@ export default function Home() {
             </h2>
             <div className="intro-copy">
               <p className="lead">
-                <strong>Vibgyor Print N Pack</strong>, formerly known as <strong>Atharva Industries</strong> (established in 2017), is a reputed manufacturer of multi-layer, multi-colour laminated flexible packaging materials and pouches operating from a modern facility at MIDC, Ahmednagar-Sambhajinagar Road, Maharashtra.
+                <strong>Vibgyor Print N Pack</strong> (established in 2017) is a reputed manufacturer of multi-layer, multi-colour laminated flexible packaging materials and pouches operating from a modern facility at MIDC, Ahmednagar-Sambhajinagar Road, Maharashtra.
               </p>
               <p>
                 Our strategic location provides excellent connectivity to major industrial hubs such as Ahilyanagar, Chhatrapati Sambhajinagar, Pune, Mumbai, Solapur, and Nashik. We deliver end-to-end solutions in both roll and pouch formats using PET, BOPP, CPP, co-extruded multi-layer LDPE/HDPE blends, and aluminium foil with robust year-round capacity.
