@@ -539,7 +539,7 @@ export default function Home() {
           </div>
           <div className="intro-layout">
             <h2>
-              A manufacturing partner built for the{" "}
+              A manufacturing partner.{" "}
               <em>Driven by Quality.</em>
             </h2>
             <div className="intro-copy">

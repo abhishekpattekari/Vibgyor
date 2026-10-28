@@ -626,9 +626,14 @@ h3 em {
 .intro-layout {
   display: grid;
   grid-template-columns: 1.08fr 0.92fr;
-  gap: 100px;
-  align-items: end;
-  margin: 40px 0 86px;
+  gap: 80px;
+  align-items: start;
+  margin: 28px 0 70px;
+}
+
+.intro-layout h2 {
+  align-self: start;
+  margin-top: 0;
 }
 
 h2 {
