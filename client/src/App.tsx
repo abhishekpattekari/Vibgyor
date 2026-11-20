@@ -57,7 +57,7 @@ function Router() {
       <Route path="/products" component={ProductsPage} />
       <Route path="/capabilities" component={CapabilitiesPage} />
       <Route path="/markets" component={MarketsPage} />
-      <Route path="/industries" component={MarketsPage} />
+      <Route path="/industries" component={IndustriesPage} />
       <Route path="/quality" component={QualityPage} />
       <Route path="/gallery" component={GalleryPage} />
       <Route path="/contact" component={ContactPage} />
@@ -74,7 +74,7 @@ function App() {
   useEffect(() => {
     const canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     if (canonical) {
-      canonical.href = `https://vibgyorprintnpack.com${location}`;
+      canonical.href = `https://www.vibgyorprintnpack.com${location}`;
     }
   }, [location]);
 
