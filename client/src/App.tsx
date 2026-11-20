@@ -15,6 +15,40 @@ import QualityPage from "./pages/QualityPage";
 import GalleryPage from "./pages/GalleryPage";
 import ContactPage from "./pages/ContactPage";
 
+// Some copied product links have accidentally included the closing XML tag
+// from the sitemap (for example, /products</loc>). Clean those URLs before
+// wouter reads the initial location so direct loads work on every browser.
+function normalizeSitemapUrl() {
+  if (typeof window === "undefined") return;
+
+  let pathname: string;
+  try {
+    pathname = decodeURIComponent(window.location.pathname);
+  } catch {
+    return;
+  }
+
+  const normalizedPath = pathname.replace(/<\\/loc>\\/?$/i, "");
+  const validRoutes = new Set([
+    "/",
+    "/about",
+    "/products",
+    "/capabilities",
+    "/markets",
+    "/industries",
+    "/quality",
+    "/gallery",
+    "/contact",
+  ]);
+
+  if (normalizedPath !== pathname && validRoutes.has(normalizedPath)) {
+    const cleanUrl = `${normalizedPath}${window.location.search}${window.location.hash}`;
+    window.history.replaceState(window.history.state, "", cleanUrl);
+  }
+}
+
+normalizeSitemapUrl();
+
 function Router() {
   return (
     <Switch>
